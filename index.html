@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Great Tarot Card App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <h1>The Great Tarot Card App</h1>
+      <p class="tagline">Cultivate clarity with a calm, modern tarot experience.</p>
+    </header>
+
+    <section class="question-section">
+      <label class="question-label" for="questionInput">What would you like insight on today?</label>
+      <textarea id="questionInput" class="question-input" rows="3" placeholder="Type your question here..."></textarea>
+      <div class="control-row">
+        <button id="shuffleButton" class="primary-button">Shuffle &amp; Lay Out Cards</button>
+        <button id="resetButton" class="ghost-button" disabled>New Reading</button>
+      </div>
+    </section>
+
+    <section class="reading-workspace">
+      <div class="deck-area">
+        <div class="deck" id="deck">
+          <div class="card-back"></div>
+          <div class="card-back"></div>
+          <div class="card-back"></div>
+          <div class="card-back"></div>
+        </div>
+        <p class="deck-instruction">Click “Shuffle &amp; Lay Out Cards” to begin.</p>
+      </div>
+
+      <div class="spread-area">
+        <div class="spread-outline">
+          <div class="spread-slot" data-position="Past">
+            <span class="slot-label">Past</span>
+          </div>
+          <div class="spread-slot" data-position="Present">
+            <span class="slot-label">Present</span>
+          </div>
+          <div class="spread-slot" data-position="Future">
+            <span class="slot-label">Future</span>
+          </div>
+        </div>
+        <p class="spread-instruction">Tap a card from the zen spread to place it into Past, Present, or Future. Click a placed card to reveal its insight.</p>
+        <div id="spreadPool" class="spread-pool" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="adviceSection" class="advice-section" hidden>
+      <div class="advice-header">
+        <h2>Your Integrated Guidance</h2>
+        <div class="tts-controls">
+          <label for="voiceSelect">Voice:</label>
+          <select id="voiceSelect">
+            <option value="auto" selected>Auto</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <button id="speakButton" class="icon-button" aria-label="Read advice aloud" disabled>
+            <span>🔊</span>
+          </button>
+          <button id="stopSpeakButton" class="icon-button" aria-label="Stop reading" disabled>
+            <span>⏹</span>
+          </button>
+        </div>
+      </div>
+      <div id="adviceText" class="advice-text"></div>
+    </section>
+  </div>
+
+  <script src="cards.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
